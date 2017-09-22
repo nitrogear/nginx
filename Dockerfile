@@ -9,9 +9,8 @@ FROM ubuntu:16.04
 
 # Install Nginx.
 RUN \
-  apt-get update && \
-  apt-get -y install software-properties-common && \
-  apt-add-repository -y ppa:nginx/stable && \
+  echo "deb http://ppa.launchpad.net/nginx/stable/ubuntu xenial main" >/etc/apt/sources.list.d/nginx-ubuntu-stable-xenial.list && \
+  apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 00A6F0A3C300EE8C && \
   apt-get update && \
   apt-get install -y nginx && \
   rm -rf /var/lib/apt/lists/* && \
