@@ -1,15 +1,17 @@
 #
 # Nginx Dockerfile
 #
-# https://github.com/dockerfile/nginx
+# https://github.com/nitrogear/nginx
 #
 
 # Pull base image.
-FROM dockerfile/ubuntu
+FROM ubuntu:16.04
 
 # Install Nginx.
 RUN \
-  add-apt-repository -y ppa:nginx/stable && \
+  apt-get update && \
+  apt-get -y install software-properties-common && \
+  apt-add-repository -y ppa:nginx/stable && \
   apt-get update && \
   apt-get install -y nginx && \
   rm -rf /var/lib/apt/lists/* && \
